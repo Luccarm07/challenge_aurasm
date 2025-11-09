@@ -274,7 +274,8 @@ CORS está habilitado para permitir requisições de qualquer origem, facilitand
 
 ## 👥 Equipe
 
-Projeto desenvolvido para o Challenge ASM - FIAP
+Projeto desenvolvido para o Challenge ASM - FIAP 
+integrantes : Lucca Ramos Mussumecci, rm: 562027 Pedro Peres Benitez, rm: 561792
 
 ## 📄 Licença
 
