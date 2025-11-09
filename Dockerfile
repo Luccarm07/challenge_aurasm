@@ -1,22 +1,15 @@
-# Etapa 1: build com Maven
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+FROM eclipse-temurin:17
+
 WORKDIR /app
 
-# Copia wrapper e arquivos Maven
-COPY pom.xml mvnw ./
+COPY mvnw .
 COPY .mvn .mvn
-RUN chmod +x mvnw
-
-# Copia código-fonte
+COPY pom.xml .
 COPY src src
 
-# Compila o projeto
-RUN ./mvnw package -DskipTests -Dquarkus.package.type=fast-jar
+RUN chmod +x mvnw
+RUN ./mvnw clean package -DskipTests
 
-# Etapa 2: runtime
-FROM eclipse-temurin:17-jdk-jammy
-WORKDIR /app
+EXPOSE 8080
 
-COPY --from=build /app/target/quarkus-app /app/
-
-CMD ["java", "-jar", "/app/quarkus-run.jar"]
+CMD ["java", "-jar", "target/quarkus-app/quarkus-run.jar"]
